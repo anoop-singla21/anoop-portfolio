@@ -32,61 +32,68 @@ const Header = ({ activeSection }) => {
 >
   Home
 </HashLink>
-                <a 
-                  href="#about" 
-                  className={`font-medium transition-colors duration-300 relative ${
-                    activeSection === 'about' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
-                  }`}
-                >
-                  About
-                  {activeSection === 'about' && (
-                    <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
-                  )}
-                </a>
-                <a 
-                  href="#skills" 
-                  className={`font-medium transition-colors duration-300 relative ${
-                    activeSection === 'skills' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
-                  }`}
-                >
-                  Skills
-                  {activeSection === 'skills' && (
-                    <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
-                  )}
-                </a>
-                <a 
-                  href="#experience" 
-                  className={`font-medium transition-colors duration-300 relative ${
-                    activeSection === 'experience' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
-                  }`}
-                >
-                  Experience
-                  {activeSection === 'experience' && (
-                    <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
-                  )}
-                </a>
-                <a 
-                  href="#education" 
-                  className={`font-medium transition-colors duration-300 relative ${
-                    activeSection === 'education' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
-                  }`}
-                >
-                  Education
-                  {activeSection === 'education' && (
-                    <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
-                  )}
-                </a>
-                <a 
-                  href="#contact" 
-                  className={`font-medium transition-colors duration-300 relative ${
-                    activeSection === 'contact' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
-                  }`}
-                >
-                  Contact
-                  {activeSection === 'contact' && (
-                    <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
-                  )}
-                </a>
+           <HashLink
+  smooth
+  to="/#about"
+  className={`font-medium transition-colors duration-300 relative ${
+    activeSection === 'about' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
+  }`}
+>
+  About
+  {activeSection === 'about' && (
+    <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
+  )}
+</HashLink>
+
+<HashLink
+  smooth
+  to="/#skills"
+  className={`font-medium transition-colors duration-300 relative ${
+    activeSection === 'skills' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
+  }`}
+>
+  Skills
+  {activeSection === 'skills' && (
+    <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
+  )}
+</HashLink>
+
+<HashLink
+  smooth
+  to="/#experience"
+  className={`font-medium transition-colors duration-300 relative ${
+    activeSection === 'experience' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
+  }`}
+>
+  Experience
+  {activeSection === 'experience' && (
+    <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
+  )}
+</HashLink>
+<HashLink
+  smooth
+  to="/#education"
+  className={`font-medium transition-colors duration-300 relative ${
+    activeSection === 'education' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
+  }`}
+>
+  Education
+  {activeSection === 'education' && (
+    <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
+  )}
+</HashLink>
+<HashLink
+  smooth
+  to="/#contact"
+  className={`font-medium transition-colors duration-300 relative ${
+    activeSection === 'contact' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
+  }`}
+>
+  Contact
+  {activeSection === 'contact' && (
+    <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
+  )}
+</HashLink>
               </>
             ) : null}
             <Link 
