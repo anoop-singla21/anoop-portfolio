@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/anoop-portfolio/static/css/main.92ee1a1f.css",
-    "main.js": "/anoop-portfolio/static/js/main.c2b825ae.js",
+    "main.js": "/anoop-portfolio/static/js/main.ab0a8a1c.js",
     "index.html": "/anoop-portfolio/index.html",
     "main.92ee1a1f.css.map": "/anoop-portfolio/static/css/main.92ee1a1f.css.map",
-    "main.c2b825ae.js.map": "/anoop-portfolio/static/js/main.c2b825ae.js.map"
+    "main.ab0a8a1c.js.map": "/anoop-portfolio/static/js/main.ab0a8a1c.js.map"
   },
   "entrypoints": [
     "static/css/main.92ee1a1f.css",
-    "static/js/main.c2b825ae.js"
+    "static/js/main.ab0a8a1c.js"
   ]
 }
