@@ -1,6 +1,6 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, HashRouter } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/pages/Home';
 import Blog from './components/pages/Blog';
@@ -31,7 +31,6 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Use HashRouter instead of BrowserRouter for GitHub Pages
   return (
     <HashRouter>
       <div className="App">
