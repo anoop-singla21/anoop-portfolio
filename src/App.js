@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, HashRouter } from 'react-router-dom';
 import Header from './components/Header';
-import Home from './pages/Home';
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
+import Home from './components/pages/Home';
+import Blog from './components/pages/Blog';
+import BlogPost from './components/pages/BlogPost';
 import Footer from './components/Footer';
 import './index.css';
 

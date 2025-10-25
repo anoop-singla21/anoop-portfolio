@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 const Header = ({ activeSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,17 +23,15 @@ const Header = ({ activeSection }) => {
           <nav className="hidden md:flex items-center space-x-8">
             {isHomePage ? (
               <>
-                <a 
-                  href="#home" 
-                  className={`font-medium transition-colors duration-300 relative ${
-                    activeSection === 'home' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
-                  }`}
-                >
-                  Home
-                  {activeSection === 'home' && (
-                    <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
-                  )}
-                </a>
+                <HashLink 
+  smooth
+  to="/#home"
+  className={`font-medium transition-colors duration-300 relative ${
+    activeSection === 'home' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
+  }`}
+>
+  Home
+</HashLink>
                 <a 
                   href="#about" 
                   className={`font-medium transition-colors duration-300 relative ${
