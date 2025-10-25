@@ -19,15 +19,15 @@ const Hero = () => {
               <a href="#contact" className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600">
                 Get In Touch
               </a>
-              <a href="Anoop_Singla_CV.pdf" download className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-transparent text-blue-500 border-2 border-blue-500 hover:bg-blue-500 hover:text-white">
+              <a href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_Singla_CV.pdf" download className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-transparent text-blue-500 border-2 border-blue-500 hover:bg-blue-500 hover:text-white">
                 Download CV
               </a>
             </div>
           </div>
           <div className="flex-1 flex justify-center">
             <div className="w-64 h-64 md:w-80 md:h-80 bg-gray-200 rounded-full overflow-hidden shadow-xl flex items-center justify-center">
-              <img 
-  src="anoop.png" 
+<img 
+  src="https://anoop-singla21.github.io/anoop-portfolio/anoop.png" 
   alt="Anoop Singla"
   className="w-full h-full object-cover"
 />
