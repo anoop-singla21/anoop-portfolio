@@ -66,12 +66,16 @@ const About = () => {
                     <span className="text-blue-600 font-medium">Junior Backend Developer</span>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
-                    <strong className="text-gray-800">Experience</strong>
+                    <strong className="text-gray-800">Current Experience</strong>
+                    <span className="text-green-600 font-medium">5+ Months</span>
+                  </div>
+                  <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
+                    <strong className="text-gray-800">Total Experience</strong>
                     <span className="text-green-600 font-medium">2+ Years</span>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
                     <strong className="text-gray-800">Education</strong>
-                    <span className="text-purple-600 font-medium">B.Tech Computer Science</span>
+                    <span className="text-purple-600 font-medium">B.Tech Mechanical Engineering</span>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
                     <strong className="text-gray-800">Status</strong>

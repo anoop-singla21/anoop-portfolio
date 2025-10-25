@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { HashLink } from 'react-router-hash-link';
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-12">
@@ -17,9 +17,9 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li><Link to="/" className="text-gray-400 hover:text-white transition-colors duration-300">Home</Link></li>
-              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors duration-300">About</a></li>
-              <li><a href="#skills" className="text-gray-400 hover:text-white transition-colors duration-300">Skills</a></li>
-              <li><a href="#experience" className="text-gray-400 hover:text-white transition-colors duration-300">Experience</a></li>
+              <li><HashLink smooth to="#about" className="text-gray-400 hover:text-white transition-colors duration-300">About</HashLink></li>
+              <li><HashLink smooth to="#skills" className="text-gray-400 hover:text-white transition-colors duration-300">Skills</HashLink></li>
+              <li><HashLink smooth to="#experience" className="text-gray-400 hover:text-white transition-colors duration-300">Experience</HashLink></li>
               <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors duration-300">Blog</Link></li>
             </ul>
           </div>

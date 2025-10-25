@@ -128,16 +128,16 @@ const Header = ({ activeSection }) => {
             <nav className="flex flex-col space-y-4">
               {isHomePage ? (
                 <>
-                  <a href="#home" className="font-medium text-gray-600 hover:text-blue-500">Home</a>
-                  <a href="#about" className="font-medium text-gray-600 hover:text-blue-500">About</a>
-                  <a href="#skills" className="font-medium text-gray-600 hover:text-blue-500">Skills</a>
-                  <a href="#experience" className="font-medium text-gray-600 hover:text-blue-500">Experience</a>
-                  <a href="#education" className="font-medium text-gray-600 hover:text-blue-500">Education</a>
-                  <a href="#contact" className="font-medium text-gray-600 hover:text-blue-500">Contact</a>
+                  <HashLink smooth to="#home" className="font-medium text-gray-600 hover:text-blue-500" onClick={toggleMenu}>Home</HashLink>
+                  <HashLink smooth to="#about" className="font-medium text-gray-600 hover:text-blue-500" onClick={toggleMenu}>About</HashLink>
+                  <HashLink smooth to="#skills" className="font-medium text-gray-600 hover:text-blue-500" onClick={toggleMenu}>Skills</HashLink>
+                  <HashLink smooth to="#experience" className="font-medium text-gray-600 hover:text-blue-500" onClick={toggleMenu}>Experience</HashLink>
+                  <HashLink smooth to="#education" className="font-medium text-gray-600 hover:text-blue-500" onClick={toggleMenu}>Education</HashLink>
+                  <HashLink smooth to="#contact" className="font-medium text-gray-600 hover:text-blue-500" onClick={toggleMenu}>Contact</HashLink>
                 </>
               ) : null}
-              <Link to="/blog" className="font-medium text-gray-600 hover:text-blue-500">Blog</Link>
-              <a href="/Anoop_Singla_CV.pdf" download className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600 w-full text-center">
+              <Link to="/blog" className="font-medium text-gray-600 hover:text-blue-500" onClick={toggleMenu}>Blog</Link>
+              <a href="/Anoop_Singla_CV.pdf" onClick={toggleMenu} download className="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600 w-full text-center">
                 Download CV
               </a>
             </nav>
