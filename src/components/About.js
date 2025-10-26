@@ -1,4 +1,5 @@
 import React from 'react';
+import { HashLink } from 'react-router-hash-link';
 
 const About = () => {
   const skills = [
@@ -172,12 +173,12 @@ const About = () => {
                 I'd love to discuss how I can contribute to your success.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="#contact"
+                <HashLink
+                  smooth to="#contact"
                   className="inline-block px-8 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-300 shadow-lg hover:shadow-xl"
                 >
                   Get In Touch
-                </a>
+                </HashLink>
                 <a
                   href="/Anoop_Singla_CV.pdf"
                   download

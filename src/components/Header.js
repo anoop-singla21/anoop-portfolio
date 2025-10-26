@@ -208,8 +208,9 @@ const Header = ({ activeSection }) => {
             )}
             
             <a 
-              href="/Anoop_Singla_CV.pdf" 
-              download 
+              href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_Singla_CV.pdf" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600"
             >
               Download CV
@@ -310,7 +311,8 @@ const Header = ({ activeSection }) => {
                 Blog
               </button>
               
-              <a href="/Anoop_Singla_CV.pdf" onClick={toggleMenu} download className="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600 w-full text-center">
+              <a href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_Singla_CV.pdf" onClick={toggleMenu} target="_blank"
+              rel="noopener noreferrer" className="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600 w-full text-center">
                 Download CV
               </a>
             </nav>
