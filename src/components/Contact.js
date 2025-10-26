@@ -10,31 +10,160 @@ const Contact = () => {
     message: ''
   });
 
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Validation rules
+  const validateField = (name, value) => {
+    switch (name) {
+      case 'name':
+        if (!value.trim()) return 'Name is required';
+        if (value.trim().length < 2) return 'Name must be at least 2 characters';
+        if (value.trim().length > 50) return 'Name must be less than 50 characters';
+        if (!/^[a-zA-Z\s.'-]+$/.test(value.trim())) return 'Name can only contain letters, spaces, and basic punctuation';
+        return '';
+
+      case 'email':
+        if (!value.trim()) return 'Email is required';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Please enter a valid email address';
+        if (value.length > 100) return 'Email must be less than 100 characters';
+        return '';
+
+      case 'subject':
+        if (!value.trim()) return 'Subject is required';
+        if (value.trim().length < 5) return 'Subject must be at least 5 characters';
+        if (value.trim().length > 200) return 'Subject must be less than 200 characters';
+        return '';
+
+      case 'message':
+        if (!value.trim()) return 'Message is required';
+        if (value.trim().length < 10) return 'Message must be at least 10 characters';
+        if (value.trim().length > 2000) return 'Message must be less than 2000 characters';
+        return '';
+
+      default:
+        return '';
+    }
+  };
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+
+    // Validate field on change if it's been touched
+    if (touched[name]) {
+      const error = validateField(name, value);
+      setErrors(prev => ({
+        ...prev,
+        [name]: error
+      }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched(prev => ({ ...prev, [name]: true }));
+    
+    const error = validateField(name, value);
+    setErrors(prev => ({
+      ...prev,
+      [name]: error
+    }));
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    let isValid = true;
+
+    // Validate all fields
+    Object.keys(formData).forEach(field => {
+      const error = validateField(field, formData[field]);
+      if (error) {
+        newErrors[field] = error;
+        isValid = false;
+      }
     });
+
+    setErrors(newErrors);
+    
+    // Mark all fields as touched to show errors
+    const allTouched = {};
+    Object.keys(formData).forEach(field => {
+      allTouched[field] = true;
+    });
+    setTouched(allTouched);
+
+    return isValid;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      // Scroll to first error
+      const firstErrorField = Object.keys(errors)[0];
+      if (firstErrorField) {
+        document.getElementById(firstErrorField)?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+      }
+      return;
+    }
+
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      alert('Thank you for your message! I will get back to you within 24 hours.');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+    try {
+      const response = await fetch('https://porfolio-backend-ach1.onrender.com/send-mail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: formData.subject.trim(),
+          message: formData.message.trim()
+        })
       });
+
+      if (response.ok) {
+        const result = await response.json();
+        alert('Thank you for your message! I will get back to you within 24 hours.');
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+        setErrors({});
+        setTouched({});
+      } else {
+        const error = await response.json();
+        alert(error.detail || 'Failed to send message. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('Network error. Please check your connection and try again.');
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
+  };
+
+  // Helper function to check if field has error and was touched
+  const hasError = (fieldName) => {
+    return touched[fieldName] && errors[fieldName];
+  };
+
+  // Calculate character counts
+  const characterCounts = {
+    name: `${formData.name.length}/50`,
+    subject: `${formData.subject.length}/200`,
+    message: `${formData.message.length}/2000`
   };
 
   return (
@@ -131,7 +260,7 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Send me a message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="form-group">
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -143,11 +272,26 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    onBlur={handleBlur}
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300 ${
+                      hasError('name') 
+                        ? 'border-red-300 focus:ring-red-500' 
+                        : 'border-gray-300 focus:ring-blue-500'
+                    }`}
                     placeholder="Enter your full name"
-                    required
                   />
+                  <div className="flex justify-between mt-1">
+                    {hasError('name') && (
+                      <span className="text-red-600 text-sm">{errors.name}</span>
+                    )}
+                    <span className={`text-xs ml-auto ${
+                      formData.name.length > 45 ? 'text-red-600' : 'text-gray-500'
+                    }`}>
+                      {characterCounts.name}
+                    </span>
+                  </div>
                 </div>
+
                 <div className="form-group">
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email Address *
@@ -158,10 +302,17 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    onBlur={handleBlur}
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300 ${
+                      hasError('email') 
+                        ? 'border-red-300 focus:ring-red-500' 
+                        : 'border-gray-300 focus:ring-blue-500'
+                    }`}
                     placeholder="your.email@example.com"
-                    required
                   />
+                  {hasError('email') && (
+                    <span className="text-red-600 text-sm mt-1">{errors.email}</span>
+                  )}
                 </div>
               </div>
 
@@ -175,10 +326,24 @@ const Contact = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                  onBlur={handleBlur}
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300 ${
+                    hasError('subject') 
+                      ? 'border-red-300 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
                   placeholder="What's this about?"
-                  required
                 />
+                <div className="flex justify-between mt-1">
+                  {hasError('subject') && (
+                    <span className="text-red-600 text-sm">{errors.subject}</span>
+                  )}
+                  <span className={`text-xs ml-auto ${
+                    formData.subject.length > 180 ? 'text-red-600' : 'text-gray-500'
+                  }`}>
+                    {characterCounts.subject}
+                  </span>
+                </div>
               </div>
 
               <div className="form-group">
@@ -191,10 +356,24 @@ const Contact = () => {
                   rows="6"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-vertical"
+                  onBlur={handleBlur}
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300 resize-vertical ${
+                    hasError('message') 
+                      ? 'border-red-300 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
                   placeholder="Tell me about your project or inquiry..."
-                  required
                 ></textarea>
+                <div className="flex justify-between mt-1">
+                  {hasError('message') && (
+                    <span className="text-red-600 text-sm">{errors.message}</span>
+                  )}
+                  <span className={`text-xs ml-auto ${
+                    formData.message.length > 1800 ? 'text-red-600' : 'text-gray-500'
+                  }`}>
+                    {characterCounts.message}
+                  </span>
+                </div>
               </div>
 
               <button
