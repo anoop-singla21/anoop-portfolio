@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { HashLink } from 'react-router-hash-link';
 const Hero = () => {
   return (
     <div className="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -16,9 +16,9 @@ const Hero = () => {
               Passionate about creating efficient, scalable software solutions with modern technologies.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <a href="#contact" className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600">
+              <HashLink smooth to="#contact" className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600">
                 Get In Touch
-              </a>
+              </HashLink>
               <a href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_Singla_CV.pdf" download className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-transparent text-blue-500 border-2 border-blue-500 hover:bg-blue-500 hover:text-white">
                 Download CV
               </a>

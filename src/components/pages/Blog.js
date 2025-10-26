@@ -34,6 +34,7 @@ const Blog = () => {
   ];
 
   return (
+    <section id='blog'>
     <div className="pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-center text-gray-900 mb-4">Blog</h1>
@@ -65,6 +66,7 @@ const Blog = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 
