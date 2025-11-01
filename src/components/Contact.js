@@ -408,8 +408,8 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
              <a href="mailto:anoopsingla21@gmail.com"> <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaEnvelope className="text-blue-600 text-2xl" /></a>
-              </div>
+                <FaEnvelope className="text-blue-600 text-2xl" />
+              </div></a>
               <h4 className="font-semibold text-gray-900 mb-2">Email Directly</h4>
               <p className="text-gray-600 text-sm">
                 Send me an email for detailed discussions or formal inquiries
@@ -417,8 +417,8 @@ const Contact = () => {
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
              <a href="tel:+917973615582"> <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaPhone className="text-green-600 text-2xl" /></a>
-              </div>
+                <FaPhone className="text-green-600 text-2xl" />
+              </div></a>
               <h4 className="font-semibold text-gray-900 mb-2">Schedule a Call</h4>
               <p className="text-gray-600 text-sm">
                 Prefer voice communication? Let's schedule a quick call
@@ -427,8 +427,8 @@ const Contact = () => {
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
              <a href="https://linkedin.com/in/anoop-singla-717b56309" target="_blank"
                 rel="noopener noreferrer"> <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaLinkedin className="text-purple-600 text-2xl" /></a>
-              </div>
+                <FaLinkedin className="text-purple-600 text-2xl" />
+              </div></a>
               <h4 className="font-semibold text-gray-900 mb-2">LinkedIn</h4>
               <p className="text-gray-600 text-sm">
                 Connect professionally and follow my latest updates
