@@ -1,7 +1,7 @@
 {
   "name": "anoop-portfolio",
   "version": "1.0.0",
-  "homepage": "https://anoop-singla21.github.io/anoop-portfolio",
+  "homepage": "https://anoosingla.fun",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
