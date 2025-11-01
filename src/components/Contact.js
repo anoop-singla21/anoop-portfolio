@@ -426,7 +426,8 @@ const Contact = () => {
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-               <a href="https://linkedin.com/in/anoop-singla-717b56309"> <FaLinkedin className="text-purple-600 text-2xl" /></a>
+               <a href="https://linkedin.com/in/anoop-singla-717b56309" target="_blank"
+                rel="noopener noreferrer"> <FaLinkedin className="text-purple-600 text-2xl" /></a>
               </div>
               <h4 className="font-semibold text-gray-900 mb-2">LinkedIn</h4>
               <p className="text-gray-600 text-sm">
