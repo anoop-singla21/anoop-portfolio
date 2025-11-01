@@ -74,34 +74,7 @@ const Education = () => {
           description: 'Organized blood donation camps and community service activities'
         }
       ]
-    },
-    {
-      degree: 'High School (Non-Medical)',
-      institution: 'SSD Sen. Sec. School',
-      period: '2008 - 2009',
-      location: 'Bathinda, Punjab, India',
-      score: '81%',
-      description: 'Completed higher secondary education with focus on science and mathematics.',
-      achievements: [
-        'Excellent academic performance with 81% marks',
-        'Strong foundation in science and mathematics',
-        'Participated in District Level Science Fair'
-      ]
-    },
-    {
-      degree: 'Matriculation',
-      institution: 'DAV Vaish High School',
-      period: '2006 - 2007',
-      location: 'Gidderbaha, Punjab, India',
-      score: '85%',
-      description: 'Completed secondary education with outstanding academic performance.',
-      achievements: [
-        'Outstanding academic achievement with 85% marks',
-        'Active participation in science fairs and academic competitions',
-        'Strong foundation for higher education'
-      ]
-    }
-  ];
+    }];
 
   const technicalSkills = [
     'AutoCAD', 'Engineering Drawing', 'Technical Documentation', 'Quality Control',
