@@ -19,7 +19,7 @@ const Hero = () => {
               <HashLink smooth to="#contact" className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600">
                 Get In Touch
               </HashLink>
-              <a href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_Singla_CV.pdf" download className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-transparent text-blue-500 border-2 border-blue-500 hover:bg-blue-500 hover:text-white">
+              <a href="https://anoop-singla21.github.io/anoop-portfolio/resume.pdf" download className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-transparent text-blue-500 border-2 border-blue-500 hover:bg-blue-500 hover:text-white">
                 Download CV
               </a>
             </div>

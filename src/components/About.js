@@ -180,8 +180,7 @@ const About = () => {
                   Get In Touch
                 </HashLink>
                 <a
-                  href="/Anoop_Singla_CV.pdf"
-                  download
+                  href="/resume.pdfhttps://anoop-singla21.github.io/anoop-portfolio/resume.pdf"
                   className="inline-block px-8 py-3 bg-white text-blue-500 border-2 border-blue-500 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl"
                 >
                   Download CV
