@@ -1,214 +1,133 @@
 import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import { scrollToElement, scrollToTop, handlePageNavigation } from '../utils/navigation';
 
 const Header = ({ activeSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   const isHomePage = location.pathname === '/';
   const isBlogPage = location.pathname === '/blog';
 
+  const navItems = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'education', label: 'Education' },
+    { id: 'contact', label: 'Contact' }
+  ];
+
   const handleSectionNavigation = (sectionId) => {
     if (isHomePage) {
-      // If already on home page, scroll to section
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      scrollToElement(sectionId);
     } else {
-      // If on another page, navigate to home page and then scroll
-      navigate('/');
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+      handlePageNavigation(navigate, '/', () => {
+        // Use a small delay to ensure DOM is ready
+        requestAnimationFrame(() => scrollToElement(sectionId));
+      });
     }
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-    }
+    closeMenu();
   };
 
   const handleBlogNavigation = () => {
     if (isBlogPage) {
-      // If already on blog page, scroll to blog section
-      const element = document.getElementById('blog');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      scrollToElement('blog');
     } else {
-      // If on another page, navigate to blog page and then scroll to blog section
-      navigate('/blog');
-      setTimeout(() => {
-        const element = document.getElementById('blog');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+      handlePageNavigation(navigate, '/blog', () => {
+        requestAnimationFrame(() => scrollToElement('blog'));
+      });
     }
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
+    closeMenu();
+  };
+
+  const handleLogoClick = () => {
+    if (isHomePage) {
+      scrollToTop();
+    } else {
+      handlePageNavigation(navigate, '/', () => {
+        requestAnimationFrame(() => scrollToTop());
+      });
     }
   };
 
-  const NavLink = ({ to, children, section }) => {
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const NavLink = ({ to, section, children }) => {
+    const isActive = activeSection === section;
+    
     if (isHomePage) {
       return (
         <HashLink 
           smooth
           to={`#${to}`}
           className={`font-medium transition-colors duration-300 relative ${
-            activeSection === section ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
+            isActive ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
           }`}
         >
           {children}
-          {activeSection === section && (
+          {isActive && (
             <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
           )}
         </HashLink>
       );
-    } else {
-      return (
-        <button 
-          onClick={() => handleSectionNavigation(to)}
-          className={`font-medium transition-colors duration-300 relative ${
-            activeSection === section ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
-          }`}
-        >
-          {children}
-          {activeSection === section && (
-            <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
-          )}
-        </button>
-      );
     }
-  };
-
-  const MobileNavLink = ({ to, children, onClick }) => {
-    if (isHomePage) {
-      return (
-        <HashLink 
-          smooth 
-          to={`#${to}`} 
-          className="font-medium text-gray-600 hover:text-blue-500" 
-          onClick={onClick}
-        >
-          {children}
-        </HashLink>
-      );
-    } else {
-      return (
-        <button 
-          onClick={() => {
-            handleSectionNavigation(to);
-            onClick();
-          }}
-          className="font-medium text-gray-600 hover:text-blue-500 text-left"
-        >
-          {children}
-        </button>
-      );
-    }
-  };
-   const handleLogoClick = () => {
-    if (location.pathname === '/') {
-      // If already on home page, scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      // If on another page, navigate to home page and then scroll to top
-      navigate('/');
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 100);
-    }
+    
+    return (
+      <button 
+        onClick={() => handleSectionNavigation(to)}
+        className={`font-medium transition-colors duration-300 relative ${
+          isActive ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
+        }`}
+      >
+        {children}
+        {isActive && (
+          <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
+        )}
+      </button>
+    );
   };
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-lg z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="logo">
-            <button 
-              onClick={handleLogoClick} className="text-2xl font-bold text-gray-800">Anoop Singla</button>
-          </div>
+          <button 
+            onClick={handleLogoClick} 
+            className="text-2xl font-bold text-gray-800 hover:opacity-80 transition-opacity"
+          >
+            Anoop Singla
+          </button>
           
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {isHomePage ? (
-              <>
-                <NavLink to="home" section="home">Home</NavLink>
-                <NavLink to="about" section="about">About</NavLink>
-                <NavLink to="skills" section="skills">Skills</NavLink>
-                <NavLink to="experience" section="experience">Experience</NavLink>
-                <NavLink to="education" section="education">Education</NavLink>
-                <NavLink to="contact" section="contact">Contact</NavLink>
-              </>
-            ) : (
-              <>
-                <button 
-                  onClick={() => handleSectionNavigation('home')}
-                  className="font-medium text-gray-600 hover:text-blue-500 transition-colors duration-300"
-                >
-                  Home
-                </button>
-                <button 
-                  onClick={() => handleSectionNavigation('about')}
-                  className="font-medium text-gray-600 hover:text-blue-500 transition-colors duration-300"
-                >
-                  About
-                </button>
-                <button 
-                  onClick={() => handleSectionNavigation('skills')}
-                  className="font-medium text-gray-600 hover:text-blue-500 transition-colors duration-300"
-                >
-                  Skills
-                </button>
-                <button 
-                  onClick={() => handleSectionNavigation('experience')}
-                  className="font-medium text-gray-600 hover:text-blue-500 transition-colors duration-300"
-                >
-                  Experience
-                </button>
-                <button 
-                  onClick={() => handleSectionNavigation('education')}
-                  className="font-medium text-gray-600 hover:text-blue-500 transition-colors duration-300"
-                >
-                  Education
-                </button>
-                <button 
-                  onClick={() => handleSectionNavigation('contact')}
-                  className="font-medium text-gray-600 hover:text-blue-500 transition-colors duration-300"
-                >
-                  Contact
-                </button>
-              </>
-            )}
+            {navItems.map(item => (
+              <NavLink 
+                key={item.id}
+                to={item.id} 
+                section={item.id}
+              >
+                {item.label}
+              </NavLink>
+            ))}
             
-            {/* Updated Blog Link */}
-            {isBlogPage ? (
-              <button 
-                onClick={handleBlogNavigation}
-                className="font-medium text-gray-600 hover:text-blue-500 transition-colors duration-300"
-              >
-                Blog
-              </button>
-            ) : (
-              <button 
-                onClick={handleBlogNavigation}
-                className="font-medium text-gray-600 hover:text-blue-500 transition-colors duration-300"
-              >
-                Blog
-              </button>
-            )}
+            <button 
+              onClick={handleBlogNavigation}
+              className="font-medium text-gray-600 hover:text-blue-500 transition-colors duration-300"
+            >
+              Blog
+            </button>
             
             <a 
-              href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_Singla_CV.pdf" 
+              href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_CV.pdf" 
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600"
@@ -221,6 +140,7 @@ const Header = ({ activeSection }) => {
           <button 
             className="md:hidden flex flex-col space-y-1"
             onClick={toggleMenu}
+            aria-label="Toggle menu"
           >
             <span className={`w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
             <span className={`w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
@@ -232,87 +152,30 @@ const Header = ({ activeSection }) => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <nav className="flex flex-col space-y-4">
-              {isHomePage ? (
-                <>
-                  <MobileNavLink to="home" onClick={toggleMenu}>Home</MobileNavLink>
-                  <MobileNavLink to="about" onClick={toggleMenu}>About</MobileNavLink>
-                  <MobileNavLink to="skills" onClick={toggleMenu}>Skills</MobileNavLink>
-                  <MobileNavLink to="experience" onClick={toggleMenu}>Experience</MobileNavLink>
-                  <MobileNavLink to="education" onClick={toggleMenu}>Education</MobileNavLink>
-                  <MobileNavLink to="contact" onClick={toggleMenu}>Contact</MobileNavLink>
-                </>
-              ) : (
-                <>
-                  <button 
-                    onClick={() => {
-                      handleSectionNavigation('home');
-                      toggleMenu();
-                    }}
-                    className="font-medium text-gray-600 hover:text-blue-500 text-left"
-                  >
-                    Home
-                  </button>
-                  <button 
-                    onClick={() => {
-                      handleSectionNavigation('about');
-                      toggleMenu();
-                    }}
-                    className="font-medium text-gray-600 hover:text-blue-500 text-left"
-                  >
-                    About
-                  </button>
-                  <button 
-                    onClick={() => {
-                      handleSectionNavigation('skills');
-                      toggleMenu();
-                    }}
-                    className="font-medium text-gray-600 hover:text-blue-500 text-left"
-                  >
-                    Skills
-                  </button>
-                  <button 
-                    onClick={() => {
-                      handleSectionNavigation('experience');
-                      toggleMenu();
-                    }}
-                    className="font-medium text-gray-600 hover:text-blue-500 text-left"
-                  >
-                    Experience
-                  </button>
-                  <button 
-                    onClick={() => {
-                      handleSectionNavigation('education');
-                      toggleMenu();
-                    }}
-                    className="font-medium text-gray-600 hover:text-blue-500 text-left"
-                  >
-                    Education
-                  </button>
-                  <button 
-                    onClick={() => {
-                      handleSectionNavigation('contact');
-                      toggleMenu();
-                    }}
-                    className="font-medium text-gray-600 hover:text-blue-500 text-left"
-                  >
-                    Contact
-                  </button>
-                </>
-              )}
+              {navItems.map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => handleSectionNavigation(item.id)}
+                  className="font-medium text-gray-600 hover:text-blue-500 text-left transition-colors duration-300"
+                >
+                  {item.label}
+                </button>
+              ))}
               
-              {/* Updated Mobile Blog Link */}
               <button 
-                onClick={() => {
-                  handleBlogNavigation();
-                  toggleMenu();
-                }}
-                className="font-medium text-gray-600 hover:text-blue-500 text-left"
+                onClick={handleBlogNavigation}
+                className="font-medium text-gray-600 hover:text-blue-500 text-left transition-colors duration-300"
               >
                 Blog
               </button>
               
-              <a href="https://anoop-singla21.github.io/anoop-portfolio/resume.pdf" onClick={toggleMenu} target="_blank"
-              rel="noopener noreferrer" className="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600 w-full text-center">
+              <a 
+                href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_CV.pdf" 
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+                className="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600 w-full text-center"
+              >
                 Download CV
               </a>
             </nav>

@@ -1,6 +1,7 @@
 // src/components/Contact.js
 import React, { useState } from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaFacebook } from 'react-icons/fa';
+import { validateField, validateForm as validateFormUtil } from '../utils/validation';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,39 +14,6 @@ const Contact = () => {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Validation rules
-  const validateField = (name, value) => {
-    switch (name) {
-      case 'name':
-        if (!value.trim()) return 'Name is required';
-        if (value.trim().length < 2) return 'Name must be at least 2 characters';
-        if (value.trim().length > 50) return 'Name must be less than 50 characters';
-        if (!/^[a-zA-Z\s.'-]+$/.test(value.trim())) return 'Name can only contain letters, spaces, and basic punctuation';
-        return '';
-
-      case 'email':
-        if (!value.trim()) return 'Email is required';
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Please enter a valid email address';
-        if (value.length > 100) return 'Email must be less than 100 characters';
-        return '';
-
-      case 'subject':
-        if (!value.trim()) return 'Subject is required';
-        if (value.trim().length < 5) return 'Subject must be at least 5 characters';
-        if (value.trim().length > 200) return 'Subject must be less than 200 characters';
-        return '';
-
-      case 'message':
-        if (!value.trim()) return 'Message is required';
-        if (value.trim().length < 10) return 'Message must be at least 10 characters';
-        if (value.trim().length > 2000) return 'Message must be less than 2000 characters';
-        return '';
-
-      default:
-        return '';
-    }
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -75,18 +43,8 @@ const Contact = () => {
     }));
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    let isValid = true;
-
-    // Validate all fields
-    Object.keys(formData).forEach(field => {
-      const error = validateField(field, formData[field]);
-      if (error) {
-        newErrors[field] = error;
-        isValid = false;
-      }
-    });
+  const handleValidateForm = () => {
+    const { isValid, errors: newErrors } = validateFormUtil(formData);
 
     setErrors(newErrors);
 
@@ -103,7 +61,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) {
+    if (!handleValidateForm()) {
       // Scroll to first error
       const firstErrorField = Object.keys(errors)[0];
       if (firstErrorField) {
@@ -132,7 +90,6 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        const result = await response.json();
         alert('Thank you for your message! I will get back to you within 24 hours.');
         setFormData({
           name: '',
