@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { scrollToElement, scrollToTop, handlePageNavigation } from '../utils/navigation';
+import { NAVIGATION_ITEMS } from '../utils/constants';
 
 const Header = ({ activeSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,16 +10,9 @@ const Header = ({ activeSection }) => {
   const navigate = useNavigate();
 
   const isHomePage = location.pathname === '/';
-  const isBlogPage = location.pathname === '/blog';
+  const isBlogPage = location.pathname.startsWith('/blog');
 
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'education', label: 'Education' },
-    { id: 'contact', label: 'Contact' }
-  ];
+  const navItems = NAVIGATION_ITEMS;
 
   const handleSectionNavigation = (sectionId) => {
     if (isHomePage) {
@@ -27,7 +21,7 @@ const Header = ({ activeSection }) => {
       handlePageNavigation(navigate, '/', () => {
         // Use a small delay to ensure DOM is ready
         requestAnimationFrame(() => scrollToElement(sectionId));
-      });
+      }, location.pathname);
     }
     closeMenu();
   };
@@ -38,7 +32,7 @@ const Header = ({ activeSection }) => {
     } else {
       handlePageNavigation(navigate, '/blog', () => {
         requestAnimationFrame(() => scrollToElement('blog'));
-      });
+      }, location.pathname);
     }
     closeMenu();
   };
@@ -49,7 +43,7 @@ const Header = ({ activeSection }) => {
     } else {
       handlePageNavigation(navigate, '/', () => {
         requestAnimationFrame(() => scrollToTop());
-      });
+      }, location.pathname);
     }
   };
 
@@ -62,7 +56,7 @@ const Header = ({ activeSection }) => {
   };
 
   const NavLink = ({ to, section, children }) => {
-    const isActive = activeSection === section;
+    const isActive = isHomePage && activeSection === section;
     
     if (isHomePage) {
       return (
@@ -84,17 +78,14 @@ const Header = ({ activeSection }) => {
     return (
       <button 
         onClick={() => handleSectionNavigation(to)}
-        className={`font-medium transition-colors duration-300 relative ${
-          isActive ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
-        }`}
+        className="font-medium text-gray-600 hover:text-blue-500 transition-colors duration-300"
       >
         {children}
-        {isActive && (
-          <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-500"></span>
-        )}
       </button>
     );
   };
+
+  const isBlogActive = isBlogPage;
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-lg z-50 transition-all duration-300">
@@ -121,7 +112,7 @@ const Header = ({ activeSection }) => {
             
             <button 
               onClick={handleBlogNavigation}
-              className="font-medium text-gray-600 hover:text-blue-500 transition-colors duration-300"
+              className={`font-medium transition-colors duration-300 ${isBlogActive ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'}`}
             >
               Blog
             </button>
@@ -164,7 +155,7 @@ const Header = ({ activeSection }) => {
               
               <button 
                 onClick={handleBlogNavigation}
-                className="font-medium text-gray-600 hover:text-blue-500 text-left transition-colors duration-300"
+                className={`font-medium text-left transition-colors duration-300 ${isBlogActive ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'}`}
               >
                 Blog
               </button>

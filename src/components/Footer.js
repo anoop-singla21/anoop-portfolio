@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { FaLinkedin, FaGithub, FaFacebook } from 'react-icons/fa';
+import { handlePageNavigation } from '../utils/navigation';
 
 const Footer = () => {
   const location = useLocation();
@@ -17,15 +18,12 @@ const Footer = () => {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      // If on another page, navigate to home page and then scroll
-      navigate('/');
-      // Use setTimeout to ensure navigation completes before scrolling
-      setTimeout(() => {
+      handlePageNavigation(navigate, '/', () => {
         const element = document.getElementById(sectionId.replace('#', ''));
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100);
+      }, location.pathname);
     }
   };
 
@@ -37,14 +35,12 @@ const Footer = () => {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      // If on another page, navigate to blog page and then scroll to blog section
-      navigate('/blog');
-      setTimeout(() => {
+      handlePageNavigation(navigate, '/blog', () => {
         const element = document.getElementById('blog');
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100);
+      }, location.pathname);
     }
   };
 

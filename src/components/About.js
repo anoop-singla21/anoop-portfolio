@@ -6,9 +6,13 @@ const About = () => {
     { name: 'Python', level: 'Advanced' },
     { name: 'FastAPI', level: 'Advanced' },
     { name: 'PostgreSQL', level: 'Intermediate' },
+    { name: 'SQLite', level: 'Advanced' },
     { name: 'Docker', level: 'Intermediate' },
     { name: 'Svelte', level: 'Intermediate' },
     { name: 'REST APIs', level: 'Advanced' },
+    { name: 'Playwright', level: 'Advanced' },
+    { name: 'TypeScript', level: 'Advanced' },
+    { name: 'Web Scraping', level: 'Advanced' },
   ];
 
   const interests = [
@@ -16,6 +20,9 @@ const About = () => {
     'API Design',
     'Security Implementation',
     'Payment Systems',
+    'Data Automation',
+    'Web Scraping',
+    'ERP Integration',
     'System Optimization',
     'Agile Development'
   ];
@@ -46,9 +53,11 @@ const About = () => {
                     solves real-world problems.
                   </p>
                   <p>
-                    Currently, I'm working on the <span className="font-semibold text-green-600">MerchantPG Platform</span> at Meharsoft Technologies, 
-                    where I've developed expertise in payment gateway integration, security implementation, and 
-                    backend architecture using Python and FastAPI.
+                    I'm a <span className="font-semibold text-blue-600">Junior Backend Developer</span> at Meharsoft Technologies, 
+                    currently working on the <span className="font-semibold text-purple-600">PACS ERP Data Sync</span> project, 
+                    focusing on automated data extraction, processing, and ERP system integration using Playwright and Python. 
+                    Previously, I worked on the <span className="font-semibold text-green-600">MerchantPG Platform</span>, 
+                    developing expertise in payment gateway integration, security implementation, and backend architecture.
                   </p>
                   <p>
                     I believe in writing clean, maintainable code and enjoy tackling complex challenges in 
@@ -67,8 +76,8 @@ const About = () => {
                     <span className="text-blue-600 font-medium">Junior Backend Developer</span>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
-                    <strong className="text-gray-800">Current Experience</strong>
-                    <span className="text-green-600 font-medium">5+ Months</span>
+                    <strong className="text-gray-800">Current Project</strong>
+                    <span className="text-purple-600 font-medium">PACS ERP Data Sync</span>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
                     <strong className="text-gray-800">Total Experience</strong>
@@ -107,12 +116,16 @@ const About = () => {
                 </div>
                 
                 <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h4 className="font-semibold text-gray-800 mb-3">Architecture Patterns</h4>
+                  <h4 className="font-semibold text-gray-800 mb-3">Architecture Patterns & Technologies</h4>
                   <div className="flex flex-wrap gap-2">
                     <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Modular Monolithic</span>
                     <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Repository Pattern</span>
                     <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Unit of Work</span>
                     <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">REST APIs</span>
+                    <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Page Object Model</span>
+                    <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Data Automation</span>
+                    <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Web Scraping</span>
+                    <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">ERP Integration</span>
                   </div>
                 </div>
               </div>

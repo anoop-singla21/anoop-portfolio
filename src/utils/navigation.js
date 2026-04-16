@@ -13,10 +13,10 @@ export const scrollToTop = (behavior = 'smooth') => {
   window.scrollTo({ top: 0, behavior });
 };
 
-export const handlePageNavigation = async (navigate, targetPath, callback) => {
-  const currentPath = window.location.pathname;
-  
-  if (currentPath !== targetPath) {
+export const handlePageNavigation = async (navigate, targetPath, callback, currentPath = null) => {
+  const effectivePath = currentPath ?? window.location.pathname;
+
+  if (effectivePath !== targetPath) {
     navigate(targetPath);
     // Use requestAnimationFrame for better timing
     return new Promise(resolve => {

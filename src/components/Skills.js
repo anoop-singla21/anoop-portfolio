@@ -10,6 +10,7 @@ const Skills = () => {
         { name: 'FastAPI', level: 'Expert' },
         { name: 'REST APIs', level: 'Expert' },
         { name: 'PostgreSQL', level: 'Advanced' },
+        { name: 'SQLite', level: 'Advanced' },
         { name: 'SQLAlchemy', level: 'Advanced' },
         { name: 'Celery', level: 'Advanced' },
         { name: 'Redis/Valkey', level: 'Advanced' },
@@ -43,6 +44,20 @@ const Skills = () => {
         { name: 'Agile Methodology', level: 'Advanced' },
         { name: 'ClickUp/Clockify', level: 'Advanced' }
       ]
+    },
+    {
+      category: "Automation & Testing",
+      icon: "🤖",
+      skills: [
+        { name: 'Playwright', level: 'Advanced' },
+        { name: 'TypeScript', level: 'Advanced' },
+        { name: 'Web Scraping', level: 'Advanced' },
+        { name: 'Data Processing', level: 'Advanced' },
+        { name: 'Page Object Model', level: 'Advanced' },
+        { name: 'Browser Automation', level: 'Intermediate' },
+        { name: 'ERP Integration', level: 'Advanced' },
+        { name: 'Data Migration', level: 'Advanced' }
+      ]
     }
   ];
 
@@ -67,7 +82,7 @@ const Skills = () => {
           My technical expertise across backend development, system architecture, and deployment
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {skillCategories.map((category, categoryIndex) => (
             <div key={categoryIndex} className="bg-gray-50 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-200">
               <div className="text-center mb-6">
@@ -102,7 +117,7 @@ const Skills = () => {
         <div className="mt-16 max-w-4xl mx-auto">
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-200">
             <h3 className="text-2xl font-bold text-center text-gray-900 mb-6">Specialized Expertise</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="text-2xl mb-2">💳</div>
                 <h4 className="font-semibold text-gray-800 mb-2">Payment Systems</h4>
@@ -112,6 +127,11 @@ const Skills = () => {
                 <div className="text-2xl mb-2">🔒</div>
                 <h4 className="font-semibold text-gray-800 mb-2">Security Architecture</h4>
                 <p className="text-sm text-gray-600">Hybrid authentication, security middleware, audit logging</p>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl mb-2">🤖</div>
+                <h4 className="font-semibold text-gray-800 mb-2">Data Automation</h4>
+                <p className="text-sm text-gray-600">Web scraping, data processing, ERP integration, migration pipelines</p>
               </div>
             </div>
           </div>
