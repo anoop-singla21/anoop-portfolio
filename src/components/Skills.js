@@ -40,7 +40,8 @@ const Skills = () => {
         { name: 'Nginx', level: 'Intermediate' },
         { name: 'Digital Ocean', level: 'Intermediate' },
         { name: 'Linux', level: 'Intermediate' },
-        { name: 'Svelte', level: 'Intermediate' },
+        { name: 'React', level: 'Intermediate' },
+        { name: 'AWS', level: 'Intermediate' },
         { name: 'Agile Methodology', level: 'Advanced' },
         { name: 'ClickUp/Clockify', level: 'Advanced' }
       ]
