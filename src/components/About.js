@@ -8,11 +8,12 @@ const About = () => {
     { name: 'PostgreSQL', level: 'Intermediate' },
     { name: 'SQLite', level: 'Advanced' },
     { name: 'Docker', level: 'Intermediate' },
-    { name: 'Svelte', level: 'Intermediate' },
+    { name: 'React', level: 'Intermediate' },
     { name: 'REST APIs', level: 'Advanced' },
     { name: 'Playwright', level: 'Advanced' },
     { name: 'TypeScript', level: 'Advanced' },
     { name: 'Web Scraping', level: 'Advanced' },
+    { name: 'AWS', level: 'Intermediate' },
   ];
 
   const interests = [
@@ -193,7 +194,7 @@ const About = () => {
                   Get In Touch
                 </HashLink>
                 <a
-                  href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_CV.pdf"
+                  href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_CV_New.pdf"
                   className="inline-block px-8 py-3 bg-white text-blue-500 border-2 border-blue-500 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl"
                 >
                   Download CV

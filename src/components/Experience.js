@@ -32,7 +32,7 @@ const Experience = () => {
           ],
           technologies: {
             backend: ['Python', 'TypeScript', 'SQLite'],
-            frontend: ['Svelte'],
+            frontend: ['React'],
             devops: ['Chromium'],
             tools: ['Playwright', 'Page Object Model (POM)']
           },
@@ -109,8 +109,8 @@ const Experience = () => {
           ],
           technologies: {
             backend: ['Python', 'FastAPI', 'PostgreSQL', 'Valkey (Redis)', 'Celery', 'WebSocket'],
-            frontend: ['Svelte', 'JavaScript', 'HTML/CSS', 'Tailwind CSS'],
-            devops: ['Docker', 'Nginx', 'Digital Ocean', 'Linux'],
+            frontend: ['React', 'JavaScript', 'HTML/CSS', 'Tailwind CSS'],
+            devops: ['Docker', 'Nginx', 'Digital Ocean', 'Linux', 'AWS'],
             tools: ['Git', 'ClickUp', 'Clockify', 'Razorpay SDK']
           },
           achievements: [
@@ -176,8 +176,8 @@ const Experience = () => {
       ],
       technologies: {
         backend: ['Python', 'FastAPI', 'PostgreSQL', 'SQLite', 'Valkey (Redis)', 'Celery', 'WebSocket'],
-        frontend: ['Svelte', 'JavaScript', 'HTML/CSS', 'Tailwind CSS'],
-        devops: ['Docker', 'Nginx', 'Digital Ocean', 'Linux', 'Chromium'],
+        frontend: ['React', 'JavaScript', 'HTML/CSS', 'Tailwind CSS'],
+        devops: ['Docker', 'Nginx', 'Digital Ocean', 'Linux', 'Chromium', 'AWS'],
         tools: ['Git', 'Playwright', 'TypeScript', 'ClickUp', 'Clockify', 'Razorpay SDK']
       },
       achievements: [
