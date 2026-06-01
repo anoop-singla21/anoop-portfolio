@@ -28,6 +28,7 @@ const Experience = () => {
             'Designed transformation logic to map legacy data to ERP schema',
             'Built end-to-end data migration pipelines ensuring data integrity',
             'Automated data ingestion into ERP systems using Playwright',
+            'Coordinated React frontend integration for ERP dashboard views and API-driven updates',
             'Worked on large-scale data synchronization between legacy and ERP systems'
           ],
           technologies: {
@@ -104,7 +105,7 @@ const Experience = () => {
             'Implemented repository pattern with Unit of Work for data consistency',
             'Integrated payment gateway APIs and webhook handlers',
             'Created background task processing with Celery workers and Beat scheduler',
-            'Supported frontend team with API integration and real-time features',
+            'Supported React frontend team with API integration and real-time features',
             'Deployed and configured applications on Digital Ocean virtual machines'
           ],
           technologies: {
@@ -172,7 +173,7 @@ const Experience = () => {
         'Implemented modular monolithic architecture with Repository Pattern and Unit of Work',
         'Created comprehensive data processing pipelines and migration systems',
         'Deployed and maintained applications on cloud infrastructure (Digital Ocean)',
-        'Collaborated with cross-functional teams for full-stack feature development'
+        'Collaborated with React frontend teams to integrate APIs, refine UI flows, and deliver responsive user experiences'
       ],
       technologies: {
         backend: ['Python', 'FastAPI', 'PostgreSQL', 'SQLite', 'Valkey (Redis)', 'Celery', 'WebSocket'],
@@ -220,7 +221,7 @@ const Experience = () => {
           <span className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-500"></span>
         </h2>
         <p className="text-xl text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-          Backend development expertise with full-stack understanding
+          Full-stack development with React frontend integration and backend automation
         </p>
 
         <div className="max-w-6xl mx-auto space-y-12">
@@ -275,10 +276,10 @@ const Experience = () => {
                     <div className="mb-6 bg-blue-50 rounded-lg p-4 border border-blue-200">
                       <div className="flex items-center">
                         <div className="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
-                        <h5 className="font-semibold text-gray-800">Primary Focus: Backend Development & Data Automation</h5>
+                        <h5 className="font-semibold text-gray-800">Primary Focus: Full-Stack Development & React Frontend Integration</h5>
                       </div>
                       <p className="text-sm text-gray-600 mt-2 ml-6">
-                        Full-stack development role encompassing backend architecture, API development, payment systems, and automated data processing
+                        Full-stack role encompassing React frontend integration, backend architecture, API development, and automated data processing
                       </p>
                     </div>
 
@@ -344,7 +345,7 @@ const Experience = () => {
                               </div>
                             </div>
                             <div>
-                              <h6 className="font-semibold text-gray-800 mb-2">Frontend Support</h6>
+                            <h6 className="font-semibold text-gray-800 mb-2">React Frontend</h6>
                               <div className="flex flex-wrap gap-1">
                                 {project.technologies.frontend.map((tech, i) => (
                                   <span key={i} className="px-1 py-1 bg-green-100 text-green-700 rounded text-xs">
