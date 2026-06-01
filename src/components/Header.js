@@ -118,7 +118,7 @@ const Header = ({ activeSection }) => {
             </button>
             
             <a 
-              href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_CV_New.pdf" 
+              href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_Resume.pdf" 
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 bg-blue-500 text-white hover:bg-blue-600"
@@ -161,7 +161,7 @@ const Header = ({ activeSection }) => {
               </button>
               
               <a 
-                href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_CV_New.pdf" 
+                href="https://anoop-singla21.github.io/anoop-portfolio/Anoop_Resume.pdf" 
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMenu}

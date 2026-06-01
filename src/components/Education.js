@@ -106,7 +106,7 @@ const Education = () => {
                   <div className="mt-4 lg:mt-0 lg:text-right">
                     <div className="text-lg font-semibold">{edu.period}</div>
                     {edu.score && (
-                      <div className="text-blue-100 bg-blue-400 bg-opacity-30 px-3 py-1 rounded-full text-sm font-medium inline-block mt-2">
+                      <div className="text-blue-100 bg-blue-400 bg-opacity-30 px-3 py-1 rounded-md text-sm font-medium inline-block mt-2">
                         Score: {edu.score}
                       </div>
                     )}
@@ -123,7 +123,7 @@ const Education = () => {
                 {/* Achievements */}
                 <div className="mb-6">
                   <h5 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                    <span className="w-2 h-2 bg-green-500 rounded-sm mr-3"></span>
                     Key Achievements
                   </h5>
                   <ul className="space-y-2">
@@ -136,37 +136,23 @@ const Education = () => {
                   </ul>
                 </div>
 
-                {/* Engineering Specific Content */}
+                {/* Selected Training (concise) */}
                 {edu.trainings && (
-                  <div className="mb-8">
+                  <div className="mb-6">
                     <h5 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                      Industrial Training & Experience
+                      <span className="w-2 h-2 bg-blue-500 rounded-sm mr-3"></span>
+                      Industrial Training
                     </h5>
-                    <div className="space-y-6">
+                    <ul className="space-y-3">
                       {edu.trainings.map((training, i) => (
-                        <div key={i} className="bg-blue-50 rounded-lg p-6 border border-blue-200">
-                          <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                            <div>
-                              <h6 className="text-lg font-semibold text-gray-900">{training.company}</h6>
-                              <p className="text-gray-600">{training.role} • {training.duration}</p>
-                            </div>
-                          </div>
-                          <p className="text-gray-700 mb-3">{training.description}</p>
+                        <li key={i} className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-200">
                           <div>
-                            <h6 className="font-semibold text-gray-800 mb-2">Key Learnings:</h6>
-                            <ul className="space-y-1">
-                              {training.learnings.map((learning, j) => (
-                                <li key={j} className="text-sm text-gray-600 flex items-start">
-                                  <span className="text-blue-500 mr-2 mt-1">•</span>
-                                  {learning}
-                                </li>
-                              ))}
-                            </ul>
+                            <h6 className="text-lg font-semibold text-gray-900">{training.company}</h6>
+                            <p className="text-sm text-gray-600">{training.role} • {training.duration}</p>
                           </div>
-                        </div>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </div>
                 )}
 
@@ -174,45 +160,22 @@ const Education = () => {
                 {edu.extracurricular && (
                   <div className="mb-6">
                     <h5 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                      <span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
-                      Extracurricular Leadership & Activities
+                      <span className="w-2 h-2 bg-purple-500 rounded-sm mr-3"></span>
+                      Extracurricular Activities
                     </h5>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <p className="text-sm text-gray-700">
                       {edu.extracurricular.map((activity, i) => (
-                        <div key={i} className="bg-purple-50 rounded-lg p-4 border border-purple-200">
-                          <h6 className="font-semibold text-gray-900">{activity.role}</h6>
-                          <p className="text-sm text-purple-600 mb-1">{activity.event}</p>
-                          <p className="text-sm text-gray-600">{activity.description}</p>
-                        </div>
+                        <span key={i}>
+                          {activity.role}{i < edu.extracurricular.length - 1 ? ' • ' : ''}
+                        </span>
                       ))}
-                    </div>
+                    </p>
                   </div>
                 )}
               </div>
             </div>
           ))}
         </div>
-
-        {/* Technical Skills from Engineering Background */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 border border-green-200">
-            <h3 className="text-2xl font-bold text-center text-gray-900 mb-6">Engineering & Technical Skills</h3>
-            <div className="flex flex-wrap gap-3 justify-center">
-              {technicalSkills.map((skill, index) => (
-                <span
-                  key={index}
-                  className="px-4 py-2 bg-white text-gray-700 rounded-full text-sm font-medium shadow-sm border border-green-200 hover:shadow-md transition-shadow duration-300"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-            <p className="text-center text-gray-600 mt-6 max-w-2xl mx-auto">
-              My mechanical engineering background provides strong analytical and problem-solving skills that complement my software development expertise
-            </p>
-          </div>
-        </div>
-
         {/* Career Transition Note */}
         <div className="mt-12 text-center">
           <div className="bg-white rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">

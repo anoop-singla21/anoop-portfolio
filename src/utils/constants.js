@@ -9,7 +9,7 @@ export const NAVIGATION_ITEMS = [
   { id: 'contact', label: 'Contact' }
 ];
 
-export const CV_URL = 'https://anoop-singla21.github.io/anoop-portfolio/Anoop_CV_New.pdf';
+export const CV_URL = 'https://anoop-singla21.github.io/anoop-portfolio/Anoop_Resume.pdf';
 export const CONTACT_API_URL = 'https://porfolio-backend-ach1.onrender.com/send-mail';
 
 // Format constants for contact form

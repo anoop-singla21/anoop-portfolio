@@ -190,33 +190,25 @@ const Experience = () => {
       ]
     },
     {
-      company: 'Chambal Fertilisers and Chemicals Limited',
-      position: 'Office Assistant (via Hill Gaurd Services Pvt. Ltd.)',
-      period: 'May 2023 - May 2025',
-      location: 'Bathinda, Punjab, India',
-      description: 'Managed comprehensive office operations with focus on SAP system management and advanced Excel reporting, developing strong analytical and process optimization skills.',
+      company: 'Memorique (https://memorique.ai/)',
+      position: 'Frontend Training Experience | Memorique',
+      period: 'Nov 2024 – May 2025',
+      location: 'Remote',
+      project: 'Gifting Dashboard · React & TypeScript',
+      description: 'Frontend training focused on building a gifting dashboard using React and TypeScript; emphasized modular UI, responsive design, and API integration.',
       keyResponsibilities: [
-        'Created and managed Sales Orders (SO), Purchase Orders (PO), and Invoices in SAP',
-        'Generated daily financial and operational reports including Stock Register',
-        'Developed complex Excel reports using advanced functions (VLOOKUP, Pivot Tables, etc.)',
-        'Maintained accurate sales registers and inventory records',
-        'Coordinated with multiple departments for data collection and reporting'
+        'Built and refined a gifting dashboard frontend using React and TypeScript, focusing on modular UI components and responsive design.',
+        'Collaborated with backend teams to integrate APIs for gift catalog, user authentication, and transaction workflows.',
+        'Applied state management patterns to ensure smooth user interactions and real-time updates.',
+        'Enhanced dashboard usability with intuitive navigation and clean UI layouts, improving user experience.',
+        'Gained hands-on exposure to agile development practices and collaborative version control with Git.'
       ],
-      technicalSkills: [
-        'SAP ERP System - Sales & Distribution Module',
-        'Microsoft Excel - Advanced Formulas & Reporting',
-        'Microsoft Office Suite',
-        'Data Analysis & Reporting',
-        'Inventory Management Systems'
-      ],
+      technicalSkills: ['React', 'TypeScript', 'State Management', 'Responsive Design', 'UI/UX'],
       achievements: [
-        'Automated daily reporting process reducing manual work by 60%',
-        'Improved data accuracy in sales registers through systematic validation',
-        'Developed comprehensive Excel templates adopted company-wide',
-        'Streamlined PO creation process reducing processing time by 40%',
-        'Maintained 99% accuracy in all financial documentation'
+        'Delivered a modular, responsive gifting dashboard with improved UX',
+        'Integrated APIs for catalog and transactions enabling end-to-end flows'
       ],
-      tools: ['SAP ERP', 'Microsoft Excel', 'Microsoft Office', 'Inventory Management Software']
+      tools: ['React', 'TypeScript', 'Git']
     }
   ];
 
@@ -437,10 +429,58 @@ const Experience = () => {
                     </div>
                   </>
                 ) : (
-                  /* Office Assistant Experience */
+                  /* Memorique Training Experience */
                   <>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                      {/* Key Responsibilities */}
+                    <div className="mb-6 bg-blue-50 rounded-lg p-4 border border-blue-200">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                        <h5 className="font-semibold text-gray-800">Training Focus: Frontend Dashboard Development</h5>
+                      </div>
+                      <p className="text-sm text-gray-600 mt-2 ml-6">
+                        Built and refined a gifting dashboard frontend using React and TypeScript, with emphasis on modular UI components, responsive design, and API-driven workflows.
+                      </p>
+                    </div>
+
+                    <div className="mb-8 border border-gray-200 rounded-lg p-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <h4 className="text-2xl font-bold text-gray-900">{exp.project}</h4>
+                        <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                          Training
+                        </span>
+                      </div>
+
+                      <p className="text-gray-700 text-lg mb-6 leading-relaxed">
+                        {exp.description}
+                      </p>
+
+                      <div className="mb-6 bg-gray-50 rounded-lg p-4 border border-gray-200">
+                        <h5 className="text-lg font-bold text-gray-900 mb-3 flex items-center">
+                          <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                          Technical Focus & Stack
+                        </h5>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <h6 className="font-semibold text-gray-800 mb-2">Core Skills</h6>
+                            <ul className="space-y-1">
+                              {exp.technicalSkills.map((skill, i) => (
+                                <li key={i} className="flex items-start text-sm text-gray-700">
+                                  <span className="text-blue-500 mr-2 mt-1">•</span>
+                                  {skill}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <h6 className="font-semibold text-gray-800 mb-2">UX & Workflow Focus</h6>
+                            <ul className="space-y-1 text-sm text-gray-700">
+                              <li className="flex items-start"><span className="text-blue-500 mr-2 mt-1">•</span>Modular UI components</li>
+                              <li className="flex items-start"><span className="text-blue-500 mr-2 mt-1">•</span>Responsive dashboard layout</li>
+                              <li className="flex items-start"><span className="text-blue-500 mr-2 mt-1">•</span>API-driven transaction workflows</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
                       <div>
                         <h5 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                           <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
@@ -455,56 +495,41 @@ const Experience = () => {
                           ))}
                         </ul>
                       </div>
+                    </div>
 
-                      {/* Technical Skills */}
-                      <div>
+                    <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-white rounded-lg p-6 border border-gray-200">
                         <h5 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                          <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                          Technical Skills Gained
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                          Key Achievements
                         </h5>
-                        <div className="flex flex-wrap gap-2">
-                          {exp.technicalSkills.map((skill, i) => (
-                            <span
-                              key={i}
-                              className="px-3 py-1 bg-blue-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium"
-                            >
-                              {skill}
-                            </span>
+                        <div className="space-y-3">
+                          {exp.achievements.map((achievement, i) => (
+                            <div key={i} className="bg-purple-50 rounded-lg p-3 border border-purple-200">
+                              <div className="flex items-start">
+                                <span className="text-purple-500 mr-2 mt-1">🏆</span>
+                                <span className="text-gray-700 text-sm">{achievement}</span>
+                              </div>
+                            </div>
                           ))}
                         </div>
                       </div>
-                    </div>
 
-                    {/* Achievements */}
-                    <div className="mt-8">
-                      <h5 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                        <span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
-                        Key Achievements
-                      </h5>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {exp.achievements.map((achievement, i) => (
-                          <div key={i} className="bg-green-50 rounded-lg p-4 border border-green-200">
-                            <div className="flex items-start">
-                              <span className="text-green-500 mr-3 mt-1">✓</span>
-                              <span className="text-gray-700">{achievement}</span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Tools Used */}
-                    <div className="mt-8 pt-8 border-t border-gray-200">
-                      <h5 className="text-xl font-bold text-gray-900 mb-4">Tools & Software</h5>
-                      <div className="flex flex-wrap gap-3">
-                        {exp.tools.map((tool, i) => (
-                          <span
-                            key={i}
-                            className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium shadow-sm"
-                          >
-                            {tool}
-                          </span>
-                        ))}
+                      <div className="bg-white rounded-lg p-6 border border-gray-200">
+                        <h5 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                          <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                          Tools & Technologies
+                        </h5>
+                        <div className="flex flex-wrap gap-2">
+                          {exp.tools.map((tool, i) => (
+                            <span
+                              key={i}
+                              className="px-3 py-1 bg-blue-50 border border-blue-200 text-blue-700 rounded-lg text-sm font-medium"
+                            >
+                              {tool}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </>
